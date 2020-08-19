@@ -13,8 +13,27 @@ class CoinPrice::Api
        response.body
        #binding.pry
     end
+    
+    
+    def self.coin_name
+     coins=JSON.parse(self.get_data) 
+     coins.collect do|data|
+      data.collect do |coin|
+    name= coin["name"]
+    puts name
+  end
+    end
+    end
+       
 end
 
+# def program_school
+# # we use the JSON library to parse the API response into nicely formatted JSON
+#   programs = JSON.parse(self.get_programs)
+#   programs.collect do |program|
+#     program["agency"]  
+#   end
+# end
 # website = CoinPriceApi.new.get_data
 # puts website
  

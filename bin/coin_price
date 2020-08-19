@@ -2,5 +2,6 @@ require_relative "../lib/coin_price.rb"
 
 CoinPrice::Cli.new.greeting
 
-website=CoinPrice::Api.get_data
-puts website
+CoinPrice::Api.coin_name
+
+
