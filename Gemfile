@@ -1,7 +1,6 @@
 source "https://rubygems.org"
 
 require 'pry'
-require 'httparty'
 require 'json'
 require 'open-uri'
 require 'net/http'

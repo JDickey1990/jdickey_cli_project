@@ -6,7 +6,7 @@ require 'pry'
 
 class CoinPrice::Api
   
- URL =  "https://api.coinlore.net/api/tickers/"
+ URL =  "https://api.coinlore.net/api/tickers/?start=0&limit=10"
     
     def self.get_data
       uri = URI.parse(URL)
@@ -27,7 +27,7 @@ class CoinPrice::Api
             end
           end
         end
-      end
+        end
     end
        
 end
