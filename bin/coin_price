@@ -5,3 +5,4 @@ CoinPrice::Cli.new.greeting
 CoinPrice::Api.coin_name
 
 
+

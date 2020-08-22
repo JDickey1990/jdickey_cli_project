@@ -2,6 +2,7 @@
  require 'open-uri'
  require 'json'
 require 'net/http'
+require 'pry'
 
 class CoinPrice::Api
   
@@ -16,13 +17,17 @@ class CoinPrice::Api
     
     
     def self.coin_name
-     coins=JSON.parse(self.get_data) 
-     coins.collect do|data|
-      data.collect do |coin|
-    name= coin["name"]
-    puts name
-  end
-    end
+      coins_data=JSON.parse(self.get_data)
+      coins_data.each do |data,coin_hashes|
+        coin_hashes.each do |coin_hash|
+          coin_hash.collect do |attribute,value|
+          if attribute == "name"
+            # binding.pry
+            puts value
+            end
+          end
+        end
+      end
     end
        
 end
