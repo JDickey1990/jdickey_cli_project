@@ -2,7 +2,7 @@ require_relative "../lib/coin_price.rb"
 
 CoinPrice::Cli.new.greeting
 
-CoinPrice::Api.coin_name
+CoinPrice::Api.coin_symbol
 
 
 

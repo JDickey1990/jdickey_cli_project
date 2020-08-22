@@ -28,7 +28,33 @@ class CoinPrice::Api
         end
       end
     end
-       
+    
+     def self.coin_price
+      coins_data=JSON.parse(self.get_data)
+      coins_data.each do |data,coin_hashes|
+        coin_hashes.each do |coin_hash|
+          coin_hash.collect do |attribute,value|
+            if attribute == "price_usd"
+              puts "$#{value}"
+            end
+          end
+        end
+      end
+    end
+    
+    
+    def self.coin_symbol
+      coins_data=JSON.parse(self.get_data)
+      coins_data.each do |data,coin_hashes|
+        coin_hashes.each do |coin_hash|
+          coin_hash.collect do |attribute,value|
+            if attribute == "symbol"
+              puts value
+            end
+          end
+        end
+      end
+    end   
 end
 
 # def program_school
