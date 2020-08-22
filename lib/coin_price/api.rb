@@ -1,6 +1,6 @@
 
- require 'open-uri'
- require 'json'
+require 'open-uri'
+require 'json'
 require 'net/http'
 require 'pry'
 
