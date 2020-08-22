@@ -21,13 +21,12 @@ class CoinPrice::Api
       coins_data.each do |data,coin_hashes|
         coin_hashes.each do |coin_hash|
           coin_hash.collect do |attribute,value|
-          if attribute == "name"
-            # binding.pry
-            puts value
+            if attribute == "name"
+              puts value
             end
           end
         end
-        end
+      end
     end
        
 end
