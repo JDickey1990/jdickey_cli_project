@@ -15,15 +15,25 @@ class CoinPrice::Cli
     
     def list_coins
       #list coins
-      puts "\nChoose a Coin to see prices.\n"
+      puts "\nChoose the number of a Coin to see it's prices.\n"
       @coins.each.with_index { |coin, index|
       puts  "#{index + 1}. #{coin}"
       }
     end
     
     def get_user_coin
-      chosen_coin = gets.strip
-      
+      chosen_coin = gets.strip.to_i
+       show_prices_for(chosen_coin) if valid(chosen_coin, @coins)
+       
     end
+    
+    def valid(input,data)
+      input.to_i <= data.length && input.to_i > 0
+    end
+    
+   def show_prices_for(chosen_coin)
+     coin = @coins[chosen_coin -1]
+    puts "Prices for #{coin}"
+   end
     
 end  
