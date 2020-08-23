@@ -1,9 +1,10 @@
 class CoinPrice::Price
-  attr_accessor :name
+  attr_accessor :price, :coin
   @@all = []
   
  def initialize(price)
-    @price=price
+    @price = price
+    @coins = coin
     save
   end
   
@@ -15,4 +16,7 @@ class CoinPrice::Price
     @@all << self
   end
   
+  # def add_to_coin
+  #   @coins.price << self
+  # end
 end

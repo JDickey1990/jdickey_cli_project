@@ -6,7 +6,6 @@ class CoinPrice::Api
       uri = URI.parse(URL)
        response = Net::HTTP.get_response(uri)
        response.body
-       #binding.pry
     end
     
     
@@ -18,6 +17,7 @@ class CoinPrice::Api
             if attribute == "name"
               name = value
               CoinPrice::Coin.new(name)
+            end
             end
           end
         end
@@ -32,7 +32,6 @@ class CoinPrice::Api
             if attribute == "price_usd"
               price = attribute
               CoinPrice::Price.new(price)
-            end
           end
         end
       end
