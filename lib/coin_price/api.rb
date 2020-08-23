@@ -1,9 +1,3 @@
-
-require 'open-uri'
-require 'json'
-require 'net/http'
-require 'pry'
-
 class CoinPrice::Api
   
  URL =  "https://api.coinlore.net/api/tickers/?start=0&limit=10"
@@ -20,9 +14,10 @@ class CoinPrice::Api
       coins_data=JSON.parse(self.get_data)
       coins_data.each do |data,coin_hashes|
         coin_hashes.each do |coin_hash|
-          coin_hash.collect do |attribute,value|
+          coin_hash.each do |attribute,value|
             if attribute == "name"
-              puts value
+              name = value
+              CoinPrice::Coin.new(name)
             end
           end
         end
