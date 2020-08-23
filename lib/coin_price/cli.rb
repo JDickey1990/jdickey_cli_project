@@ -12,7 +12,9 @@ class CoinPrice::Cli
      #to be pulled from api instead
      CoinPrice::Api.get_data
      CoinPrice::Api.coin_name
+     CoinPrice::Api.coin_price
      @coins = CoinPrice::Coin.all
+     @price = CoinPrice::Price.all
     end
     
     def list_coins
@@ -39,8 +41,10 @@ class CoinPrice::Cli
     
    def show_prices_for(chosen_coin)
      coin = @coins[chosen_coin -1]
-    puts "Here is the price of #{coin} in usd"
-      CoinPrice::Api.coin_price
-   end
+    puts "Here is the price of #{coin.name} in usd"
+      @price.each.with_index(1).select{|price, index|  index == coin}
+       puts "$#{price} in usd"
+    end
+
     
 end  

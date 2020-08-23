@@ -30,7 +30,8 @@ class CoinPrice::Api
         coin_hashes.each do |coin_hash|
           coin_hash.collect do |attribute,value|
             if attribute == "price_usd"
-              puts "$#{value}"
+              price = attribute
+              CoinPrice::Price.new(price)
             end
           end
         end
