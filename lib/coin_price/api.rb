@@ -17,8 +17,10 @@ class CoinPrice::Api
             if attribute == "name"
              @name = value
             elsif attribute == "price_usd"
-             @price = value
-            CoinPrice::Coin.new(@name, @price)
+             @price_usd = value
+            elsif attribute == "price_btc"
+             @price_btc = value
+            CoinPrice::Coin.new(@name, @price_usd, @price_btc)
             end
           end
         end

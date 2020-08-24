@@ -34,9 +34,11 @@ class CoinPrice::Cli
     
    def show_prices_for(chosen_coin)
      coin = @coins[chosen_coin -1]
-     puts "\nHere is the price of #{coin.name}.\n"
-     price = coin.price
-     puts "\n$#{price} in usd\n"
+     puts "\nHere are the price details of #{coin.name}.\n"
+     price_usd = coin.price_usd
+     puts "\n$#{price_usd} in usd\n"
+      price_btc = coin.price_btc
+     puts "\n#{price_btc} in bitcoin\n"
      list_choices
      get_user_choice
     end

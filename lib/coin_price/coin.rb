@@ -1,10 +1,12 @@
 class CoinPrice::Coin
-  attr_accessor :name, :price
+  attr_accessor :name, :price_usd, :price_btc
   @@all = []
   
- def initialize(name,price)
+ def initialize(name,price_usd, price_btc)
     @name=name
-    @price = price
+    @price_usd = price_usd
+    @price_btc = price_btc
+    
     save
   end
   
