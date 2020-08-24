@@ -22,7 +22,5 @@ class CoinPrice::Coin
   # coin.price
   # end
 
-  
-  
 end
   

@@ -8,7 +8,6 @@ class CoinPrice::Cli
   end
   
    def get_coins
-     @price = CoinPrice::Price.all
      @coins = CoinPrice::Coin.all
     end
     
@@ -38,8 +37,36 @@ class CoinPrice::Cli
      puts "\nHere is the price of #{coin.name}.\n"
      price = coin.price
      puts "\n$#{price} in usd\n"
-     puts "\nSelect another coin or enter exit to leave program\n"
+     list_choices
+     get_user_choice
     end
 
+
+    def list_choices
+      @choices =["Return to main menu"]
+      puts "\nEnter in 1 to return to the main menu.\n"
+      @choices.each.with_index(1) { |choice, index|
+      puts  "#{index}. #{choice}"
+      }
+    end
+    
+    def get_user_choice
+      choice = gets.strip.to_i
+    if valid(choice, @choices) && choice == 1
+      call
+      else
+      puts "Invalid input please select from the numbers listed"
+      get_user_choice
+  end
+  end
+  
+  
+    # def recall
+    # puts "\nSelect another coin or enter exit to leave program\n"
+    # get_coins
+    # list_coins
+    # get_user_coin
+    # get_coins
+    # end
     
 end  
