@@ -2,19 +2,25 @@ class CoinPrice::Cli
   def call
     puts "\n Welcome to the coin price cli! \n"
     get_coins
+    run_sequence
+  end
+   
+   def run_sequence
     list_coins
     get_user_coin
     get_coins
+    list_choices
+    get_user_choice
   end
   
    def get_coins
      @coins = CoinPrice::Coin.all
-    end
+   end
     
     def list_coins
       puts "\nChoose the number of a Coin to see it's price.\n"
       @coins.each.with_index(1) { |coin, index|
-      puts  "#{index}. #{coin.name}"
+      puts  "#{index}. #{coin.name}(#{coin.symbol})"
       }
     end
     
@@ -37,16 +43,14 @@ class CoinPrice::Cli
      puts "\nHere are the price details of #{coin.name}.\n"
      price_usd = coin.price_usd
      price_btc = coin.price_btc
-     puts "\n1 #{coin.name} coin is worth 
-     $#{price_usd} usd
-     #{price_btc} bitcoin\n"
-     list_choices
-     get_user_choice
-    end
+     puts "\n1 #{coin.name} coin is worth:\n"
+     puts "\n$#{price_usd} usd\n"
+     puts "#{price_btc} bitcoin\n"
+  end
 
 
     def list_choices
-      @choices =["Return to main menu","exit"]
+      @choices =["return to main menu","exit"]
       puts "\nEnter in 1 to return to the main menu and 2 to exit.\n"
       @choices.each.with_index(1) { |choice, index|
       puts  "#{index}. #{choice}"
@@ -56,7 +60,7 @@ class CoinPrice::Cli
     def get_user_choice
       choice = gets.strip.to_i
       if valid(choice, @choices) && choice == 1
-        call
+        run_sequence
       elsif  valid(choice, @choices) && choice == 2
        exit!
       else

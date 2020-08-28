@@ -8,59 +8,18 @@ class CoinPrice::Api
        response.body
     end
     
-    
-    # def self.coin_data
-    #   coins_data=JSON.parse(self.get_data)
-    #   coins_data.each do |data,coin_hashes|
-    #     coin_hashes.each do |coin_hash|
-    #       coin_hash.each do |attribute,value|
-    #         if attribute == "name"
-    #         @name = value
-    #         elsif attribute == "price_usd"
-    #         @price_usd = value
-    #         elsif attribute == "price_btc"
-    #         @price_btc = value
-    #         CoinPrice::Coin.new(@name, @price_usd, @price_btc)
-    #         end
-    #       end
-    #     end
-    #   end
-    # end
      def self.coin_data
 	      coins_data=JSON.parse(self.get_data)
 	      coins_data["data"].each do |coin|
 	          name = coin["name"]
 	          price_usd = coin["price_usd"]
 	          price_btc = coin["price_btc"]
-	         if name != nil && price_usd != nil && price_btc != nil 
-	           CoinPrice::Coin.new(name, price_usd, price_btc)
+	          symbol = coin["symbol"]
+	         if 
+	         name != nil && price_usd != nil && price_btc != nil && symbol != nil
+	           CoinPrice::Coin.new(name, price_usd, price_btc, symbol)
 	        end
 	      end
     end
-    # def self.coin_price
-    #   coins_data=JSON.parse(self.get_data)
-    #   coins_data.each do |data,coin_hashes|
-    #     coin_hashes.each do |coin_hash|
-    #       coin_hash.collect do |attribute,value|
-    #         if attribute == "price_usd"
-    #           price = attribute
-    #           CoinPrice::Price.new(price)
-    #       end
-    #     end
-    #   end
-    # end
-    
-    
-    # def self.coin_symbol
-    #   coins_data=JSON.parse(self.get_data)
-    #   coins_data.each do |data,coin_hashes|
-    #     coin_hashes.each do |coin_hash|
-    #       coin_hash.collect do |attribute,value|
-    #         if attribute == "symbol"
-    #           puts value
-    #         end
-    #       end
-    #     end
-    #   end
-    # end   
+   
 end
