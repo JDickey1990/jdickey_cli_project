@@ -35,17 +35,15 @@ class CoinPrice::Cli
     end
     
     def valid(input,data)
-      input.to_i <= data.length && input.to_i > 0
+      input <= data.length && input > 0
     end
     
    def show_prices_for(chosen_coin)
      coin = @coins[chosen_coin -1]
      puts "\nHere are the price details of #{coin.name}.\n"
-     price_usd = coin.price_usd
-     price_btc = coin.price_btc
      puts "\n1 #{coin.name} coin is worth:\n"
-     puts "\n$#{price_usd} usd\n"
-     puts "#{price_btc} bitcoin\n"
+     puts "\n$#{coin.price_usd} usd\n"
+     puts "#{coin.price_btc} bitcoin\n"
   end
 
 
