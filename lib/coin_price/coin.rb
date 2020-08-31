@@ -3,7 +3,7 @@ class CoinPrice::Coin
   @@all = []
   
  def initialize(name,price_usd, price_btc, symbol)
-    @name=name
+    @name = name
     @price_usd = price_usd
     @price_btc = price_btc
     @symbol = symbol

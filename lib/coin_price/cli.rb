@@ -1,26 +1,22 @@
 class CoinPrice::Cli
+  
   def call
     puts "\n Welcome to the coin price cli! \n"
-    get_coins
+    @coins = CoinPrice::Coin.all
     run_sequence
   end
    
   def run_sequence
     list_coins
     get_user_coin
-    get_coins
     list_choices
     get_user_choice
   end
   
-  def get_coins
-    @coins = CoinPrice::Coin.all
-  end
-    
   def list_coins
     puts "\nChoose the number of a Coin to see it's price.\n"
     @coins.each.with_index(1) { |coin, index|
-    puts  "#{index}. #{coin.name}(#{coin.symbol})"
+     puts "#{index}. #{coin.name}(#{coin.symbol})"
     }
   end
     
@@ -45,7 +41,6 @@ class CoinPrice::Cli
     puts "\n$#{coin.price_usd} usd\n"
     puts "#{coin.price_btc} bitcoin\n"
   end
-
 
   def list_choices
     @choices =["return to main menu","exit"]
